@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Abdelkarim JAHJAH</title>
+  <meta name="description" content="Portfolio futuriste multi-langue et multi-thème d'Abdelkarim JAHJAH, développeur full stack et spécialiste bases de données.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --accent-cyan: #22d3ee;
+      --accent-pink: #fb37ff;
+      --navy: #0f172a;
+      --slate: #cbd5e1;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+    .glass-panel {
+      background: rgba(15,23,42,0.45);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 50px rgba(34, 211, 238, 0.15), 0 10px 60px rgba(251, 55, 255, 0.12);
+    }
+    .neon-border { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 0 35px rgba(34, 211, 238, 0.35); }
+    .halo {
+      position: absolute;
+      inset: auto;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(34,211,238,0.15), transparent 55%),
+                  radial-gradient(circle at 70% 70%, rgba(251,55,255,0.12), transparent 55%);
+      filter: blur(40px);
+      pointer-events: none;
+      animation: float 10s ease-in-out infinite alternate;
+    }
+    @keyframes float { from { transform: translateY(-12px); } to { transform: translateY(12px); } }
+    .fade-in { opacity: 0; transform: translateY(18px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .accent-gradient { background: linear-gradient(120deg, var(--accent-cyan), var(--accent-pink)); }
+    .neon-hover:hover { box-shadow: 0 0 0 1px rgba(255,255,255,0.12), 0 8px 35px rgba(34, 211, 238, 0.4), 0 8px 35px rgba(251, 55, 255, 0.35); }
+    .timeline:before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(var(--accent-cyan), var(--accent-pink));
+      opacity: 0.6;
+    }
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink));
+      box-shadow: 0 0 18px rgba(34, 211, 238, 0.7);
+    }
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; display: none; }
+    [data-theme='futuristic'] {
+      color-scheme: dark;
+      --p: 186 72% 54%;
+      --pc: 186 100% 90%;
+      --s: 296 100% 67%;
+      --sc: 296 100% 95%;
+      --a: 43 96% 56%;
+      --ac: 43 100% 10%;
+      --n: 216 28% 14%;
+      --nc: 214 32% 90%;
+      --b1: 222 47% 10%;
+      --b2: 222 47% 8%;
+      --b3: 222 47% 6%;
+      --bc: 214 32% 90%;
+      --in: 199 89% 62%;
+      --inc: 199 100% 10%;
+      --su: 141 53% 45%;
+      --suc: 141 100% 10%;
+      --wa: 36 97% 55%;
+      --wac: 36 100% 8%;
+      --er: 351 95% 71%;
+      --erc: 351 100% 10%;
+      --rounded-btn: 0.9rem;
+      --tab-radius: 0.6rem;
+    }
+  </style>
+</head>
+<body class="bg-base-200 text-base-content">
+  <div class="halo"></div>
+  <div class="halo" style="right: -120px; top: 40%;"></div>
+  <header class="sticky top-0 z-40 bg-base-200/70 backdrop-blur border-b border-white/5">
+    <div class="navbar px-4 lg:px-8">
+      <div class="flex-1 items-center gap-3">
+        <div class="w-10 h-10 rounded-xl accent-gradient flex items-center justify-center text-white font-semibold shadow-lg">AJ</div>
+        <div>
+          <p class="font-bold text-lg">Abdelkarim JAHJAH</p>
+          <p class="text-xs opacity-70" data-i18n="nav_role">Développeur Full Stack · Bases de données</p>
+        </div>
+      </div>
+      <div class="flex-none gap-3">
+        <a href="#projects" class="btn btn-ghost btn-sm" data-i18n="nav_projects">Projets</a>
+        <a href="#contact" class="btn btn-ghost btn-sm" data-i18n="nav_contact">Contact</a>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-sm gap-1">🌐 <span data-i18n="nav_language">Langue</span></label>
+          <ul tabindex="0" class="menu dropdown-content z-20 p-2 shadow bg-base-200 rounded-box w-44 glass-panel">
+            <li><a href="#" data-lang="fr">Français 🇫🇷</a></li>
+            <li><a href="#" data-lang="en">English 🇬🇧</a></li>
+          </ul>
+        </div>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-sm gap-1">🎛 <span data-i18n="nav_theme">Thème</span></label>
+          <ul tabindex="0" class="menu dropdown-content z-20 p-2 shadow bg-base-200 rounded-box w-48 glass-panel">
+            <li><a href="#" data-theme-value="light">Light</a></li>
+            <li><a href="#" data-theme-value="dark">Dark</a></li>
+            <li><a href="#" data-theme-value="futuristic">Futuristic</a></li>
+            <li><a href="#" data-theme-value="cyberpunk">Cyberpunk</a></li>
+          </ul>
+        </div>
+        <a href="#contact" class="btn btn-sm accent-gradient border-none text-white" data-i18n="nav_cta">Me recruter</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative overflow-hidden">
+    <section class="min-h-[75vh] flex items-center px-4 lg:px-8 py-12" id="hero">
+      <div class="grid lg:grid-cols-2 gap-10 items-center w-full">
+        <div class="space-y-6 fade-in">
+          <div class="badge badge-lg border-none accent-gradient text-white" data-i18n="hero_badge">Développeur Full Stack</div>
+          <h1 class="text-4xl lg:text-5xl font-bold leading-tight">
+            <span data-i18n="hero_title">Bonjour, je suis Abdelkarim.</span>
+          </h1>
+          <p class="text-lg opacity-80 max-w-2xl" data-i18n="hero_subtitle">Étudiant en BUT Informatique, spécialisé en développement logiciel, bases de données et web. Je conçois des applications robustes, élégantes et performantes.</p>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn accent-gradient border-none text-white shadow-lg" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta_projects">Voir mes projets</button>
+            <button class="btn btn-outline border-white/40 hover:border-white/70" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta_contact">Me contacter</button>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-2xl">
+            <div class="glass-panel rounded-2xl p-4 neon-hover">
+              <p class="text-sm opacity-70" data-i18n="hero_stack">Stack principale</p>
+              <p class="font-semibold">C# · WPF · SQL</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-4 neon-hover">
+              <p class="text-sm opacity-70" data-i18n="hero_availability">Disponibilité</p>
+              <p class="font-semibold" data-i18n="hero_dates">Avril → Juin 2026</p>
+            </div>
+            <div class="glass-panel rounded-2xl p-4 neon-hover">
+              <p class="text-sm opacity-70" data-i18n="hero_language">Langues</p>
+              <p class="font-semibold" data-i18n="hero_language_list">Fr · Ar · En</p>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="glass-panel rounded-3xl p-6 neon-border relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-pink-500/5 to-transparent pointer-events-none"></div>
+            <p class="text-sm uppercase tracking-[0.3em] text-accent" data-i18n="hero_card_title">Profil Professionnel</p>
+            <p class="text-2xl font-semibold mt-3" data-i18n="hero_card_heading">Développeur Full Stack rigoureux</p>
+            <p class="opacity-80 mt-3" data-i18n="hero_card_body">Spécialisé en conception logicielle, data management et interfaces performantes. Passionné par les expériences utilisateur modernes et l’architecture robuste.</p>
+            <div class="mt-6 grid grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <p class="text-sm opacity-70" data-i18n="hero_card_study">Formation</p>
+                <p class="font-semibold" data-i18n="hero_card_study_value">BUT Informatique</p>
+                <p class="text-sm opacity-70" data-i18n="hero_card_study_school">IUT Annecy</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <p class="text-sm opacity-70" data-i18n="hero_card_focus">Spécialités</p>
+                <p class="font-semibold" data-i18n="hero_card_focus_value">WPF · SQL · Web</p>
+                <p class="text-sm opacity-70" data-i18n="hero_card_focus_note">Robustesse & UX</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="px-4 lg:px-8 py-12">
+      <div class="glass-panel rounded-3xl p-8 lg:p-10 fade-in">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-12 h-12 rounded-full accent-gradient"></div>
+          <div>
+            <p class="text-sm uppercase tracking-[0.2em] text-accent" data-i18n="about_kicker">À propos</p>
+            <h2 class="text-3xl font-bold" data-i18n="about_title">Identité claire & professionnelle</h2>
+          </div>
+        </div>
+        <p class="text-lg opacity-80" data-i18n="about_body">Étudiant en 2ᵉ année de BUT Informatique à l’IUT d’Annecy, je conçois des applications robustes, ergonomiques et performantes. Passionné par le développement orienté objet, l’architecture logicielle et l’optimisation de bases de données.</p>
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 neon-hover">
+            <p class="text-sm opacity-70" data-i18n="about_soft_title">Soft skills</p>
+            <ul class="mt-2 space-y-1 list-disc list-inside text-sm opacity-90">
+              <li data-i18n="about_soft_1">Organisation & autonomie</li>
+              <li data-i18n="about_soft_2">Fiabilité et ponctualité</li>
+              <li data-i18n="about_soft_3">Esprit d’équipe</li>
+            </ul>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 neon-hover">
+            <p class="text-sm opacity-70" data-i18n="about_interest_title">Centres d’intérêt</p>
+            <ul class="mt-2 space-y-1 list-disc list-inside text-sm opacity-90">
+              <li data-i18n="about_interest_1">Randonnée & voyage</li>
+              <li data-i18n="about_interest_2">Musculation</li>
+              <li data-i18n="about_interest_3">Nouvelles technologies</li>
+            </ul>
+          </div>
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 neon-hover">
+            <p class="text-sm opacity-70" data-i18n="about_contact_title">Contact direct</p>
+            <p class="font-medium">📍 Annemasse, France</p>
+            <p class="text-sm opacity-80">📧 <a class="underline" href="mailto:jahjahabdelkarim26@gmail.com">jahjahabdelkarim26@gmail.com</a></p>
+            <p class="text-sm opacity-80">📱 <a class="underline" href="tel:+33768618405">+33 7 68 61 84 05</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="px-4 lg:px-8 py-12">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <p class="text-sm uppercase tracking-[0.2em] text-accent" data-i18n="skills_kicker">Compétences</p>
+          <h2 class="text-3xl font-bold" data-i18n="skills_title">Expertises techniques</h2>
+          <p class="opacity-70" data-i18n="skills_subtitle">Trois piliers : logiciel, bases de données, web & UI.</p>
+        </div>
+        <div class="badge badge-outline border-white/30 text-xs" data-i18n="skills_availability">Disponible pour stage (avril → juin 2026)</div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass-panel rounded-2xl p-6 fade-in neon-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-300">💻</div>
+            <h3 class="text-xl font-semibold" data-i18n="skill_dev_title">Développement logiciel</h3>
+          </div>
+          <ul class="space-y-2 opacity-85">
+            <li data-i18n="skill_dev_1">C#, .NET, WPF (MVVM)</li>
+            <li data-i18n="skill_dev_2">Programmation orientée objet</li>
+            <li data-i18n="skill_dev_3">UML / Merise</li>
+            <li data-i18n="skill_dev_4">Architecture logicielle</li>
+          </ul>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 fade-in neon-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center text-pink-300">🗄️</div>
+            <h3 class="text-xl font-semibold" data-i18n="skill_db_title">Bases de données</h3>
+          </div>
+          <ul class="space-y-2 opacity-85">
+            <li data-i18n="skill_db_1">SQL avancé, procédures stockées</li>
+            <li data-i18n="skill_db_2">PostgreSQL, SQLite</li>
+            <li data-i18n="skill_db_3">Administration & optimisation</li>
+            <li data-i18n="skill_db_4">Gestion des transactions, triggers</li>
+          </ul>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 fade-in neon-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-200">🌐</div>
+            <h3 class="text-xl font-semibold" data-i18n="skill_web_title">Web & UI</h3>
+          </div>
+          <ul class="space-y-2 opacity-85">
+            <li data-i18n="skill_web_1">HTML5, CSS3, JavaScript</li>
+            <li data-i18n="skill_web_2">PHP, Laravel (CRUD, sécurité)</li>
+            <li data-i18n="skill_web_3">Responsive design</li>
+            <li data-i18n="skill_web_4">UX moderne & accessibilité</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="px-4 lg:px-8 py-12">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <p class="text-sm uppercase tracking-[0.2em] text-accent" data-i18n="projects_kicker">Projets</p>
+          <h2 class="text-3xl font-bold" data-i18n="projects_title">Réalisations sélectionnées</h2>
+          <p class="opacity-70" data-i18n="projects_subtitle">3 projets maximum pour un impact immédiat.</p>
+        </div>
+        <a href="mailto:jahjahabdelkarim26@gmail.com" class="btn btn-outline border-white/40" data-i18n="projects_cta">Discuter d'un projet</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="glass-panel rounded-2xl overflow-hidden fade-in group">
+          <div class="relative">
+            <div class="h-40 bg-gradient-to-br from-cyan-400/30 via-pink-500/25 to-indigo-500/20 group-hover:scale-105 transition-transform"></div>
+            <div class="absolute inset-0 bg-black/20"></div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex gap-2 flex-wrap text-xs">
+              <div class="badge badge-outline border-cyan-300/50 text-cyan-100">C#</div>
+              <div class="badge badge-outline border-pink-300/50 text-pink-100">WPF</div>
+              <div class="badge badge-outline border-indigo-300/50 text-indigo-100">SQLite</div>
+            </div>
+            <h3 class="text-xl font-semibold" data-i18n="project1_title">Application WPF — Parc automobile</h3>
+            <p class="opacity-80" data-i18n="project1_desc">Application desktop complète (CRUD, filtres) avec architecture MVVM et base SQLite optimisée.</p>
+            <div class="flex gap-3 text-sm">
+              <a href="#" class="link" data-i18n="project_github">Code GitHub</a>
+              <a href="#" class="link" data-i18n="project_demo">Démo</a>
+            </div>
+          </div>
+        </article>
+        <article class="glass-panel rounded-2xl overflow-hidden fade-in group">
+          <div class="relative">
+            <div class="h-40 bg-gradient-to-br from-indigo-400/30 via-cyan-400/25 to-pink-500/20 group-hover:scale-105 transition-transform"></div>
+            <div class="absolute inset-0 bg-black/20"></div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex gap-2 flex-wrap text-xs">
+              <div class="badge badge-outline border-cyan-300/50 text-cyan-100">Laravel</div>
+              <div class="badge badge-outline border-pink-300/50 text-pink-100">SQL</div>
+              <div class="badge badge-outline border-indigo-300/50 text-indigo-100">PHP</div>
+            </div>
+            <h3 class="text-xl font-semibold" data-i18n="project2_title">SAE 2.01 — Inscriptions ESF</h3>
+            <p class="opacity-80" data-i18n="project2_desc">Modélisation complète, interface WPF ergonomique et logique métier claire pour la gestion d’inscriptions.</p>
+            <div class="flex gap-3 text-sm">
+              <a href="#" class="link" data-i18n="project_github">Code GitHub</a>
+              <a href="#" class="link" data-i18n="project_demo">Démo</a>
+            </div>
+          </div>
+        </article>
+        <article class="glass-panel rounded-2xl overflow-hidden fade-in group">
+          <div class="relative">
+            <div class="h-40 bg-gradient-to-br from-pink-400/25 via-indigo-400/20 to-cyan-400/25 group-hover:scale-105 transition-transform"></div>
+            <div class="absolute inset-0 bg-black/20"></div>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex gap-2 flex-wrap text-xs">
+              <div class="badge badge-outline border-cyan-300/50 text-cyan-100">Laravel</div>
+              <div class="badge badge-outline border-pink-300/50 text-pink-100">PHP</div>
+              <div class="badge badge-outline border-indigo-300/50 text-indigo-100">SQL</div>
+            </div>
+            <h3 class="text-xl font-semibold" data-i18n="project3_title">Application Web & base de données</h3>
+            <p class="opacity-80" data-i18n="project3_desc">Application web en équipe : gestion utilisateurs, sécurité et administration d'une base robuste.</p>
+            <div class="flex gap-3 text-sm">
+              <a href="#" class="link" data-i18n="project_github">Code GitHub</a>
+              <a href="#" class="link" data-i18n="project_demo">Démo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="timeline" class="px-4 lg:px-8 py-12">
+      <p class="text-sm uppercase tracking-[0.2em] text-accent" data-i18n="timeline_kicker">Expérience & Formation</p>
+      <h2 class="text-3xl font-bold mb-6" data-i18n="timeline_title">Parcours</h2>
+      <div class="relative timeline pl-10 space-y-6">
+        <div class="flex gap-4 items-start fade-in">
+          <div class="timeline-dot mt-1"></div>
+          <div class="glass-panel rounded-2xl p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold" data-i18n="timeline1_title">BUT Informatique</p>
+              <span class="badge badge-outline" data-i18n="timeline1_date">2024 – 2027</span>
+            </div>
+            <p class="opacity-80" data-i18n="timeline1_desc">Spécialisation en développement, data management et systèmes à l’IUT Annecy.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start fade-in">
+          <div class="timeline-dot mt-1"></div>
+          <div class="glass-panel rounded-2xl p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold" data-i18n="timeline2_title">Parcours d’accès spécifique en santé</p>
+              <span class="badge badge-outline" data-i18n="timeline2_date">2024 – 2025</span>
+            </div>
+            <p class="opacity-80" data-i18n="timeline2_desc">Université Grenoble Alpes.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start fade-in">
+          <div class="timeline-dot mt-1"></div>
+          <div class="glass-panel rounded-2xl p-5 w-full">
+            <div class="flex items-center justify-between">
+              <p class="font-semibold" data-i18n="timeline3_title">Baccalauréat général</p>
+              <span class="badge badge-outline" data-i18n="timeline3_date">2020 – 2023</span>
+            </div>
+            <p class="opacity-80" data-i18n="timeline3_desc">Mathématiques & Physique-Chimie, Lycée des Glières.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="px-4 lg:px-8 py-12">
+      <div class="glass-panel rounded-3xl p-8 lg:p-10 grid lg:grid-cols-2 gap-8 fade-in">
+        <div class="space-y-4">
+          <p class="text-sm uppercase tracking-[0.2em] text-accent" data-i18n="contact_kicker">Contact</p>
+          <h2 class="text-3xl font-bold" data-i18n="contact_title">Construisons une expérience premium</h2>
+          <p class="opacity-80" data-i18n="contact_body">Envie de collaborer sur une application robuste et élégante ? Parlons de votre projet ou de mon stage.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <a href="mailto:jahjahabdelkarim26@gmail.com" class="btn btn-outline border-white/30" data-i18n="contact_email">Envoyer un email</a>
+            <a href="tel:+33768618405" class="btn btn-outline border-white/30" data-i18n="contact_phone">Appeler</a>
+            <a href="https://www.linkedin.com" class="btn btn-outline border-white/30">LinkedIn</a>
+            <a href="https://github.com" class="btn btn-outline border-white/30">GitHub</a>
+          </div>
+        </div>
+        <form class="space-y-4">
+          <div>
+            <label class="label"><span class="label-text" data-i18n="contact_name_label">Nom</span></label>
+            <input type="text" class="input input-bordered w-full bg-white/5 border-white/20" data-i18n-placeholder="contact_name_placeholder" placeholder="Votre nom">
+          </div>
+          <div>
+            <label class="label"><span class="label-text" data-i18n="contact_email_label">Email</span></label>
+            <input type="email" class="input input-bordered w-full bg-white/5 border-white/20" data-i18n-placeholder="contact_email_placeholder" placeholder="vous@example.com">
+          </div>
+          <div>
+            <label class="label"><span class="label-text" data-i18n="contact_message_label">Message</span></label>
+            <textarea class="textarea textarea-bordered w-full bg-white/5 border-white/20" rows="4" data-i18n-placeholder="contact_message_placeholder" placeholder="Votre message"></textarea>
+          </div>
+          <button type="button" class="btn accent-gradient border-none text-white w-full" data-i18n="contact_submit">Envoyer</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <button class="btn btn-circle accent-gradient text-white border-none back-to-top" aria-label="Back to top">↑</button>
+
+  <footer class="py-6 px-4 lg:px-8 text-sm opacity-70 text-center">
+    <p data-i18n="footer_note">© 2025 Abdelkarim JAHJAH — Portfolio futuriste.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
